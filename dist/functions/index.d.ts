@@ -1,0 +1,10 @@
+import { Platform, DeezerRes, YoutubeRes, GenericSong, SpotifyRes, SoundCloudRes } from "../types/index";
+export declare const getSongType: (url: string) => Platform | null;
+export declare const rgbToHex: (rgb: [number, number, number]) => string;
+export declare const getDeezerTrack: (url: string) => Promise<DeezerRes>;
+export declare const getYoutubeTrack: (url: string) => Promise<YoutubeRes>;
+export declare const getSpotifyTrack: (url: string) => Promise<SpotifyRes>;
+export declare const getSoundCloudTrack: (url: string) => Promise<SoundCloudRes>;
+export declare const formatMilliseconds: (milliseconds: number, padStart?: boolean) => string;
+export declare const getTrackData: (song_type: Platform, url: string) => Promise<GenericSong>;
+export declare const isValidSongData: (songData: any) => boolean | string;
