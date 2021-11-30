@@ -12,6 +12,8 @@ import Colorthief from "colorthief";
 import { parse } from "himalaya";
 import { load } from "cheerio";
 
+import { millify } from "millify";
+
 export const getSongType = (url: string): Platform | null => {
     for (let platform in REGEXPS) if (REGEXPS[platform].test(url)) return platform as Platform;
     return null;
@@ -190,24 +192,7 @@ export const getSoundCloudTrack = async (url: string): Promise<SoundCloudRes> =>
 
 // From https://stackoverflow.com/questions/19700283/how-to-convert-time-in-milliseconds-to-hours-min-sec-format-in-javascript/67462589#67462589
 export const formatMilliseconds = (milliseconds: number, padStart: boolean = false) => {
-    const pad = (num: number) => {
-        return `${num}`.padStart(2, "0");
-    };
-
-    let asSeconds = milliseconds / 1000;
-
-    let hours = undefined;
-    let minutes = Math.floor(asSeconds / 60);
-    let seconds = Math.floor(asSeconds % 60);
-
-    if (minutes > 59) {
-        hours = Math.floor(minutes / 60);
-        minutes %= 60;
-    }
-
-    return hours
-        ? `${padStart ? pad(hours) : hours}:${pad(minutes)}:${pad(seconds)}`
-        : `${padStart ? pad(minutes) : minutes}:${pad(seconds)}`;
+    return millify(milliseconds);
 };
 
 export const getTrackData = async (song_type: Platform, url: string) => {

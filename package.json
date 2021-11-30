@@ -27,6 +27,9 @@
         "cheerio": "^1.0.0-rc.10",
         "colorthief": "^2.3.2",
         "himalaya": "^1.1.0",
+        "millify": "^4.0.0",
+        "parse-color": "^1.0.0",
+        "rgb-hex": "^4.0.0",
         "skia-canvas": "^0.9.25"
     },
     "devDependencies": {
